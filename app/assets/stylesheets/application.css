@@ -13,3 +13,7 @@
  *= require_tree .
  *= require_self
  */
+
+ * {
+   box-sizing: border-box; /*padding,marginなど使用した時意図しない大きさになるのを防ぐ*は全ての要素に適応する*/
+ }
