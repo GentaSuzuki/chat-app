@@ -17,12 +17,12 @@
       </div>
       <div class='chat-room-form__field--right'>
         <select name="room[user_ids][]"><!--プルダウンセレクトボックスroom[user_ids][]はキー-->
-        <option value="">チャットするユーザーを選択してください</option><!--選択肢になる-->
+          <option value="">チャットするユーザーを選択してください</option><!--選択肢になる-->
         <% User.all.where.not(id: current_user.id).each do |user| %><!--現在ログインしているユーザーをのぞく-->
-        <option value=<%= user.id %>><%= user.name %></option><!--user.idをparamsに入れてコントローラーに送ることができる-->
+          <option value=<%= user.id %>><%= user.name %></option><!--user.idをparamsに入れてコントローラーに送ることができる-->
         <% end %>
         </select>
-        <input name="room[user_ids][]" type="hidden" value=<%=current_user.id%>><!--ログイン中のidをparamsに入れることができる>
+        <input name="room[user_ids][]" type="hidden" value=<%=current_user.id%>><!--ログイン中のidをparamsに入れることができる-->
       </div>
     </div>
     <div class='chat-room-form__field'>
