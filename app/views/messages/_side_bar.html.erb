@@ -1,8 +1,8 @@
-<div class="side_bar_header">
- <div class= "header_name">
+<div class="side-bar-header">
+ <div class= "header-name">
  <%= link_to current_user.name , edit_user_path(current_user) %>
  </div>
- <div class= "create_room">
+ <div class= "create-room">
  <%= link_to 'チャットを作成する' , new_room_path%>
 </div>
 </div>
@@ -10,13 +10,13 @@
 <div class = "rooms">
  <% current_user.rooms.each do |room|%><!--チャットルームに対して同じ処理を繰り返し実行する変数|room|-->
  <div class ="room"> 
-  <div class ="room_name">
-    <a href ="#"><%= room.name%></a><!--room.nameはroomsテーブルのカラム名を表示するをeachで繰り返し実行している-->
+  <div class ="room-name">
+    <%=link_to room.name, room_messages_path(room)%><!--room.nameはroomsテーブルのカラム名を表示するをeachで繰り返し実行している,room_messages_path(room)はメッセージ一覧ページと引数でメッセージと紐付いているチャットルームに遷移できる-->
   </div>
  </div>
  <%end%>
  <div class= "room">
-  <div class = "room_name">
+  <div class = "room-name">
     <a href ="#">techroom2</a>
   </div>
  </div>
