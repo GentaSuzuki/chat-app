@@ -1,57 +1,29 @@
-<div class = "chat_header">
-   <div class = "left_header">
-     <div class="header_title">
-     hogehuga
+<div class = "chat-header">
+   <div class = "left-header">
+     <div class="header-title">
+     <%= @room.name%><!--@roomはcontroller/messages.rbでユーザーに関する値は格納しているのでチャット画面のヘッダーにチャットルーム名が記載される-->
      </div>
    </div>
   <div class="right-header">
-    <div class="header_btn">
-      <a href= "#">チャットを終了する</a>
+    <div class="header-btn">
+      <%=link_to "チャットを終了する", room_path(@room), method: :delete%>
     </div>
   </div>
 </div>
 
 <div class = "messages">
-  <div class="message">
-   <div class ="upper_message">
-     <div class="message_user">
-       Tom
-     </div>
-     <div class ="message_date">
-       2020/3/31(Wed) 12:43:30
-     </div>
-   </div>
-   <div class ="lower_message">
-     <div class ="message_content">
-     おはよう
-     </div>
-   </div> 
-  </div>
+  <%= render partial: 'message', collection: @messages%>
+</div> 
 
-  <div class ="message">
-    <div class="upper_message">
-      <div class="message_user">
-       Sim
-      </div>
-      <div class="message_date">
-       2020/3/31(Wed)12:43:30
-      </div>
-    </div>
-    <div class="lower_message">
-      <div class="message_content">
-       こんばんは
-      </div>
-    </div>
-  </div>
-</div>
 
-<div class = "form">
-  <div class="form_input">
-    <input class ="form_message" placeholder="type a message">
+ <%= form_with model: [@room, @message], html: {class: "form"}, local: true do |f| %><!--まず、form_withで@room（指定したチャットルームのレコード情報）,@message（メッセージモデルのインスタンスMessage.new）を引数として渡しているこれはmessagesのルーティングがroomsの子要素になっているから-->
+  <div class="form-input">
+    <%= f.text_field :content, class: 'form-message',placeholder: 'type a message'%>
     <label class="form-image">
       <span class="image-file">画像</span>
-      <input type="file" class="hidden">
+      <%= f.file_field :image, class: 'hidden' %>
     </label>
   </div>
-     <input class= "form_submit" type ="submit" value="送信" >
+  <%= f.submit '送信', class: 'form-submit' %>
+<% end %>
 </div>

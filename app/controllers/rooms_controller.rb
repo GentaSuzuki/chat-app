@@ -16,6 +16,12 @@ class RoomsController < ApplicationController
     end
   end
 
+  def destroy
+    room = Room.find(params[:id])
+    room.destroy
+    redirect_to root_path
+  end
+
   private#クラス外から呼び出せないclassの外部から呼び出されたら困るもの
 
   def room_params#ストロングパラメーター指定した情報のみを受け取る仕組み
