@@ -1,5 +1,8 @@
 class RoomsController < ApplicationController
 
+  def index#ビューファイルのroomsのindex(一覧ページを開く).html.erbにつながる
+  end
+
   def new#新規投稿ページを表示するリクエストに対応
     @room =Room.new
   end
