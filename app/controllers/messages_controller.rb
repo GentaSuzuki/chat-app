@@ -20,7 +20,7 @@ class MessagesController < ApplicationController
   private
 
   def message_params
-    params.require(:message).permit(:content).merge(user_id: current_user.id)#messageの内容をmessagesテーブルに保存できるようにメッセージのリクエストがあったときにcontentのカラム名にuser_id,currentuser_idと紐づける
+    params.require(:message).permit(:content, :image).merge(user_id: current_user.id)#messageの内容をmessagesテーブルに保存できるようにメッセージのリクエストがあったときにcontentのカラム名とimageカラム名をpuser_id,currentuser_idと紐づける
   end
 end
 
